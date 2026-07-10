@@ -248,13 +248,14 @@
         status.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
       }
 
-      // Submit to FormSubmit (free, hardcoded recipients incl. _cc). AJAX endpoint returns JSON.
-      fetch("https://formsubmit.co/ajax/marchoud.zakaria@gmail.com", {
+      // Submit to Web3Forms (reliable, free). Recipients are configured with the access key.
+      var payload = Object.fromEntries(new FormData(form).entries());
+      fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
       })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return r.ok && (d.success === true || d.success === "true"); }); })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return r.ok && d.success === true; }); })
         .then(function (success) { done(success); })
         .catch(function () { done(false); });
     });
