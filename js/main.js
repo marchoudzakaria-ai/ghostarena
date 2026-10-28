@@ -15,7 +15,7 @@
     { href: "evenements.html",     label: "Evenements",      key: "evenements" }
   ];
 
-  var IG = "https://www.instagram.com/ghost.arena_/";
+  var IG = "https://www.instagram.com/ghost.arena/?hl=fr";
   var FB = "https://www.facebook.com/people/Ghost-Arena/61586192936143/";
   var TEL = "0478905283";
   var MAIL = "contact.ghostarena@gmail.com";
